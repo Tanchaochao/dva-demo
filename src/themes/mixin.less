@@ -1,13 +1,16 @@
 @import '~themes/default';
-
-@dark-half: #494949;
-@purple: #d897eb;
-@shadow-1: 4px 4px 20px 0 rgba(0, 0, 0, 0.01);
-@shadow-2: 4px 4px 40px 0 rgba(0, 0, 0, 0.05);
-@transition-ease-in: all 0.3s ease-out;
-@transition-ease-out: all 0.3s ease-out;
+// 主要渐变背景
+@main-gradient-bg:linear-gradient(252deg,rgba(85,106,234,1) 0%,rgba(97,61,212,1) 100%);
+@main-color:@primary-color;
+@transition-ease-in: all 0.2s ease-out;
+@transition-ease-out: all 0.2s ease-out;
 @ease-in: ease-in;
-
+// 浅文字
+@shallow-color:#8887B0;
+// 字体大小
+.ft(@size){
+  font-size: @size;
+}
 .text-gradient {
   background-image: -webkit-gradient(
     linear,
@@ -21,9 +24,34 @@
   -webkit-text-fill-color: transparent;
 }
 
-.background-hover {
-  transition: @transition-ease-in;
-  &:hover {
-    background-color: @hover-color;
+.text-overflow {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.button(@height){
+  background-color: #fff;
+  padding:0 17px;
+  text-align: center;
+  -webkit-appearance: none;
+  outline: none;
+  border: none;
+  height: @height;
+  color: @primary-color;
+  border-radius:2px;
+  border: 1px solid @primary-color;
+  cursor: pointer;
+  font-weight:600;
+  font-size: 14px;
+  &:hover{
+    color: darken(@primary-color, 5%);
+    border-color: darken(@primary-color, 5%);
   }
+}
+.line-clamp(@line){
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: @line;/*表示显示几行*/
+  overflow: hidden;
 }

@@ -5,7 +5,6 @@ import { Link } from 'dva/router'
 import BaseMenu from './BaseMenu';
 import Logo from '../../assets/logo.png';
 const { Sider } = Layout;
-
 export default class SiderMenu extends PureComponent {
   
   render(){
@@ -16,7 +15,7 @@ export default class SiderMenu extends PureComponent {
         collapsible
         width={256}
         collapsed={collapsed}
-        className={styles['sider-menu']}
+        className={`${styles['sider-menu']} main-menu`}
       >
         <div className={styles.logo} key="logo" id="logo">
           <Link to="/">

@@ -12,8 +12,10 @@ const Menus =(props => {
                     <SubMenu
                       key={item.path}
                       title={(
-                        <span><Icon type={item.icon} />
-                          <span>{item.name}</span>
+                        <span>
+                          <Icon type={item.icon} />
+                          <span className="menu-name">{item.name}</span>
+                          {/* <p>{item.name}</p> */}
                         </span>
                     )}
                     >
@@ -23,8 +25,9 @@ const Menus =(props => {
             }
             return (
                 <Menu.Item key={item.path}>
-                     <Icon type={item.icon} />
-                    <span>{item.name}</span>
+                    <Icon type={item.icon} />
+                    <span className="menu-name">{item.name}</span>
+                    {/* <p>{item.name}</p> */}
                 </Menu.Item>
             );
           })
@@ -33,7 +36,6 @@ const Menus =(props => {
       return (
         <Menu
           mode="inline"
-          theme="dark"
         >
           {menuItems}
         </Menu>

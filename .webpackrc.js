@@ -1,6 +1,6 @@
 // https://umijs.org/config/
 import { resolve } from 'path'
-import { i18n } from './src/utils/config'
+// import { i18n } from './src/utils/config'
 export default {
   theme: './theme.config.js',
   // Webpack Configuration
@@ -13,6 +13,7 @@ export default {
     "services": resolve(__dirname, './src/services'),
     "themes": resolve(__dirname, './src/themes'),
     "utils": resolve(__dirname, './src/utils'),
+    "assets":resolve(__dirname, './src/assets'),
   },
   "extraBabelPlugins": [
     ["import", {
