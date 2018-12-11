@@ -11,14 +11,8 @@ class BasicLayout extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      collapsed: false,
+      collapsed: true,
     };
-  }
-  
-  toggle = () => {
-    this.setState({
-      collapsed: !this.state.collapsed,
-    });
   }
 
   render() {
@@ -29,11 +23,11 @@ class BasicLayout extends React.Component {
         < SiderMenu collapsed={collapsed}/>
         <Layout>
           <Header style={{ background: '#fff', padding: 0 }}>
-           <span className={styles.collapsed} onClick={this.toggle}>
-            <Icon
+           <span className={styles.collapsed}>
+            {/* <Icon
                 className="trigger"
                 type={this.state.collapsed ? 'menu-unfold' : 'menu-fold'}
-              />
+              /> */}
            </span>
           </Header>
           <Content >

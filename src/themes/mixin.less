@@ -5,8 +5,15 @@
 @transition-ease-in: all 0.2s ease-out;
 @transition-ease-out: all 0.2s ease-out;
 @ease-in: ease-in;
-// 浅文字
+// 浅文字 偏主色
 @shallow-color:#8887B0;
+// 浅文字 偏浅灰
+@light-gray:#ccc;
+// 边框颜色
+@border-color:#E5E5E5;
+// 黄色按钮颜色
+@yellow-color:#FFBF0E;
+@main-bg:#F5F5FA;
 // 字体大小
 .ft(@size){
   font-size: @size;
@@ -30,7 +37,7 @@
   overflow: hidden;
 }
 
-.button(@height){
+.button(@height, @color){
   background-color: #fff;
   padding:0 17px;
   text-align: center;
@@ -38,15 +45,15 @@
   outline: none;
   border: none;
   height: @height;
-  color: @primary-color;
+  color: @color;
   border-radius:2px;
-  border: 1px solid @primary-color;
+  border: 1px solid @color;
   cursor: pointer;
   font-weight:600;
   font-size: 14px;
   &:hover{
-    color: darken(@primary-color, 5%);
-    border-color: darken(@primary-color, 5%);
+    color: darken(@color, 5%);
+    border-color: darken(@color, 5%);
   }
 }
 .line-clamp(@line){

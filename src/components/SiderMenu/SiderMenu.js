@@ -3,7 +3,7 @@ import { Layout } from 'antd';
 import styles from './SiderMenu.m.less';
 import { Link } from 'dva/router'
 import BaseMenu from './BaseMenu';
-import Logo from '../../assets/logo.png';
+import Logo from '../../assets/logo_s.png';
 const { Sider } = Layout;
 export default class SiderMenu extends PureComponent {
   

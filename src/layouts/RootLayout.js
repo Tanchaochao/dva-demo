@@ -3,11 +3,15 @@ import { connect } from 'dva';
 import PropTypes from 'prop-types';
 import BasicLayout from './BasicLayout';
 
+import { LocaleProvider } from 'antd';
+import zh_CN from 'antd/lib/locale-provider/zh_CN';
 
 class RootLayout extends React.Component {
   render() {
     return (
-      <BasicLayout {...this.props} />
+      <LocaleProvider locale={zh_CN}>
+        <BasicLayout {...this.props} />
+      </LocaleProvider>
     );
   }
 }

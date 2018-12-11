@@ -20,6 +20,7 @@ function IndexPage() {
       <Checkbox checked>测试数据</Checkbox>
       <Switch defaultChecked checkedChildren="开" unCheckedChildren="关" />,
       <p>测试数据</p>
+      <i className="hxydicon icon-pihao" />
     </div>
   );
 }

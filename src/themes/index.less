@@ -2,7 +2,6 @@
 
 body {
   height: 100%;
-  overflow-y: hidden;
   background-color: #f8f8f8;
 }
 *{
@@ -20,7 +19,10 @@ body {
 
 :global {
   .myBtn{
-    .button(32px);
+    .button(32px, @primary-color);
+    &[type="yellow"]{
+      .button(32px, @yellow-color);
+    }
   }
   .ant-tooltip-inner{
     box-shadow:0px 4px 10px 0px rgba(0,0,0,0.2) !important; 
@@ -33,6 +35,14 @@ body {
   .ant-tooltip-arrow{
     border-bottom-color:#fff !important;
   }
+  // 背景色
+  .ant-layout{
+    background-color: @main-bg;
+  }
+  .ant-pagination{
+    text-align: right;
+  }
+  // 菜单主要样式 Start
   .main-menu{
     .ant-menu-submenu-open{
       background:rgba(0,0,0,0.1);
@@ -41,6 +51,10 @@ body {
       border-right: none;
     }
     .ant-menu{
+      .placeholder{
+        margin-top: 10px;
+        margin-bottom: 0;
+      }
       background: none;
       color: #fff ;
       &:not(.ant-menu-horizontal) .ant-menu-item-selected{
@@ -61,20 +75,91 @@ body {
     .ant-menu-submenu > .ant-menu{
       background: none;
     }
+    .ant-menu-inline-collapsed {
+      > .ant-menu-submenu > .ant-menu-submenu-title .hxydicon + span,  > .ant-menu-item .hxydicon + span{
+        max-width: 0;
+        display: inline-block;
+        opacity: 0;
+      }
+    }
     &.ant-layout-sider{
       background:@main-gradient-bg !important;
     }
+    // 菜单宽度
+    &.ant-layout-sider-collapsed{
+      flex: 0 0 100px !important;
+      max-width: 100px !important;
+      min-width: 100px !important;
+      width: 100px !important;
+    }
+
     
   }
+  // 主菜单只有一级时隐藏悬浮多余类容
+  .ant-menu-inline-collapsed-tooltip .ant-tooltip-content {
+    .ant-tooltip-arrow{
+      border-right-color:#fff;
+    }
+    .ant-tooltip-inner .hxydicon{
+     display: none;
+    }
+    .no_children{
+      display: none;
+    }
+  }
+  
   .ant-layout-header{
     height: 60px !important;
     line-height: 60px !important;
     box-shadow: 0 1px 4px rgba(0,21,41,.08);
     position: relative;
   }
+  // 表格相关样式
+  .ant-table{
+    .ant-table-body{
+      .ant-table-thead{
+        >tr{
+          >th{
+            color: @text-color;
+            padding: 18px 16px;
+            &.text-right{
+              text-align: right;
+            }
+            .require{
+              color: red;
+              margin-right: 5px;
+              vertical-align: middle;
+            }
+          }
+        }
+      }
+      .ant-table-tbody{
+        >tr{
+          >td{
+            padding: 8px 16px;
+            &.text-right{
+              text-align: right;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // 私有样式
   a:focus {
     text-decoration: none;
   }
+
+  // .ant-menu-inline-collapsed{
+  //   width: 100px !important;
+  //   >.ant-menu-submenu > .ant-menu-submenu-title, >.ant-menu-item{
+  //     padding: 0 !important;
+  //     text-align: center;
+  //     line-height: normal !important;
+  //     height: auto !important;
+  //   }
+  // }
 }
 @media (min-width: 1600px) {
   

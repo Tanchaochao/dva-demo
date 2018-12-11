@@ -13,9 +13,9 @@ const Menus =(props => {
                       key={item.path}
                       title={(
                         <span>
-                          <Icon type={item.icon} />
-                          <span className="menu-name">{item.name}</span>
-                          {/* <p>{item.name}</p> */}
+                          { item.level && item.level === 1 ? <i className={`hxydicon ${item.icon}`} /> : null}
+                          <span>{item.name}</span>
+                          { item.level && item.level === 1 ?  <p className="placeholder">{item.name}</p>: null}
                         </span>
                     )}
                     >
@@ -24,10 +24,10 @@ const Menus =(props => {
                   );
             }
             return (
-                <Menu.Item key={item.path}>
-                    <Icon type={item.icon} />
-                    <span className="menu-name">{item.name}</span>
-                    {/* <p>{item.name}</p> */}
+                <Menu.Item key={item.path} >
+                    { item.level && item.level === 1 ? <i className={`hxydicon ${item.icon}`} /> : null}
+                    <span>{item.name}</span> 
+                    { item.level && item.level === 1 ?  <p className="placeholder no_children">{item.name}</p>: null}
                 </Menu.Item>
             );
           })
