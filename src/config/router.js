@@ -25,7 +25,7 @@ export default function getRouterConfig(app) {
       component: dynamicWrapper(app, 'home', false),
       title: '首页',
     },{
-      path: '/inquiryQuotation/myInquiry', // 询价 /客户询价列表
+      path: '/inquiry', // 询价 /客户询价列表
       exact: true,
       component: dynamicWrapper(app, 'inquiryQuotation/myInquiry', false),
       title: '我的询价',

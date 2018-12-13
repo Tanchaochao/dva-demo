@@ -3,6 +3,7 @@ import React from 'react';
 import { Layout, Icon } from 'antd';
 import SiderMenu from '../components/SiderMenu/SiderMenu';
 import Breadcrumb from 'components/Breadcrumb/Breadcrumb';
+// import Siders from 'components/Sider/Sider';
 import styles from './BasicLayout.m.less';
 const { Header, Content, Footer } = Layout;
 
@@ -24,6 +25,7 @@ class BasicLayout extends React.Component {
     return (
       <Layout>
         < SiderMenu collapsed={collapsed}/>
+        {/* < Siders /> */}
         <Layout>
           <Header className={styles.Header}>
            <span className={styles.collapsed}>
