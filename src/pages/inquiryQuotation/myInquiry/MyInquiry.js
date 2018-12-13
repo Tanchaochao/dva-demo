@@ -88,9 +88,48 @@ class MyInquiry extends PureComponent {
               </Menu.Item>
             </Menu>
           );
-        // const enterButton = (
-        //     <span><Icon type="search" />&nbsp;&nbsp;<span>搜索</span></span>
-        // );
+          const menus = (
+            <Menu className={styles.tableMenu}>
+              <div className={styles.menu}>
+                <dl>
+                    <dt>
+                        <span>需求数量/pcs</span>
+                        <span>需求人数</span>
+                    </dt>
+                   <div>
+                        <dd>
+                            <span>1,500</span>
+                            <span>10</span>
+                        </dd>
+                        <dd>
+                            <span>1,500</span>
+                            <span>10</span>
+                        </dd>
+                        <dd>
+                            <span>1,500</span>
+                            <span>10</span>
+                        </dd>
+                        <dd>
+                            <span>1,500</span>
+                            <span>10</span>
+                        </dd>
+                        <dd>
+                            <span>1,500</span>
+                            <span>10</span>
+                        </dd>
+                        <dd>
+                            <span>1,500</span>
+                            <span>10</span>
+                        </dd>
+                        <dd>
+                            <span>1,500</span>
+                            <span>10</span>
+                        </dd>
+                   </div>
+                </dl>
+              </div>
+            </Menu>
+          );
         return(
             <div className={`container ${styles.MyInquiry}`}>
                 <div className={styles.top}>
@@ -102,13 +141,6 @@ class MyInquiry extends PureComponent {
                             onSearch={value => console.log(value)}
                             size="large"
                         />
-                        {/* <Search
-                            className={styles.Search}
-                            placeholder="请输入制造商料号"
-                            enterButton={enterButton}
-                            size="large"
-                            onSearch={value => console.log(value)}
-                        /> */}
                     </div>
                     <div className={styles.tabs}>
                         <ul className={styles.left}>
@@ -173,7 +205,7 @@ class MyInquiry extends PureComponent {
                                                 <span></span>
                                                 <Dropdown
                                                 trigger={['click']}
-                                                overlay={menu}
+                                                overlay={menus}
                                                 overlayClassName={styles.dropdown} >
                                                     <span style={{ cursor: "pointer" }}>
                                                         <b>1</b>位客户正在询价
