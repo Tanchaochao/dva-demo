@@ -8,19 +8,19 @@
         width: 100px !important;
         background:@main-gradient-bg !important;
         .placeholder{
-            margin-top: 10px;
-            margin-bottom: 0;
+            margin-top: 10px !important;
+            margin-bottom: 0 !important;
         }
         .ant-menu-dark{
             .hxydicon {
-                font-size: 24px
+                font-size: 24px !important;
             }
             background: transparent;
             .ant-menu-submenu-title:hover,
             .ant-menu-submenu-open,
             .ant-menu-submenu-selected{
-                color: #fff;
-                background-color: rgba(0,0,0,0.1);
+                color: #fff !important;
+                background-color: rgba(0,0,0,0.1) !important;
                
             }
         }
@@ -39,9 +39,9 @@
                     line-height: normal !important;
                     height: auto !important;
                     .hxydicon + span{
-                        max-width: 0;
-                        opacity: 0;
-                        display: inline-block;
+                        max-width: 0 !important;
+                        opacity: 0 !important;
+                        display: inline-block !important;
                     }
                 }
             }
@@ -51,25 +51,25 @@
                 line-height: normal !important;
                 height: auto !important;
                 .hxydicon + span{
-                    max-width: 0;
-                    opacity: 0;
-                    display: inline-block;
+                    max-width: 0 !important;
+                    opacity: 0 !important;
+                    display: inline-block !important;
                 }
             }
         }
         .ant-menu{
            &.ant-menu-dark .ant-menu-item-selected{
-               background-color: rgba(0,0,0,0.1);
+               background-color: rgba(0,0,0,0.1) !important;
            }
         }
     }
     // 悬浮的菜单 样式
     .ant-menu-inline-collapsed-tooltip .ant-tooltip-content {
         .ant-tooltip-arrow{
-            border-right-color:#fff;
+            border-right-color:#fff !important;
         }
         .ant-tooltip-inner .hxydicon{
-            display: none;
+            display: none !important;
         }
         .no_children{
             display: none;
@@ -79,16 +79,16 @@
 
     }
     .ant-menu-dark .ant-menu-sub{
-        background: @main-gradient-bg;
+        background: @main-gradient-bg !important;
     }
     .ant-menu-submenu-popup{
         .ant-menu-item:not(.ant-menu-item-selected){
             &:hover{
-                background-color: #ad8927;
+                background-color: #ad8927 !important;
             }
         }
         &.ant-menu-dark .ant-menu-item-selected{
-            background-color: @yellow-color;
+            background-color: @yellow-color !important;
         }
     }
 }
