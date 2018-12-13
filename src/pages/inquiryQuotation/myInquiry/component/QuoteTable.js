@@ -139,19 +139,24 @@ class QuoteTable extends PureComponent{
                 <Table
                 rowKey="key"
                 bordered
-                dataSource={this.dataSource}
+                dataSource={items.nodata ?  [] : this.dataSource}
                 columns={this.columns}
                 pagination={false}
                 footer={ items.status === 2 ? tableFooter : null }
+                locale={{
+                    emptyText: '暂无库存',
+                  }}
                 />
                 <div className={styles.quoteTableBtnGroup} >
                 {
-                    items.status === 2 ?
+                    items.status === 2 && !items.nodata ?
                     <span className={styles.noQtyBtn}><button type="yellow" className="myBtn">暂无库存</button></span>:
                     null
                 }
+                    {
+                        !items.nodata ?<button className="myBtn" style={{ margin:"0 10px 0 20px" }}>提交报价</button>:null
+                    }
                     
-                    <button className="myBtn" style={{ margin:"0 10px 0 20px" }}>提交报价</button>
                     <button className="myBtn">新增报价</button>
                 </div>
             </div>

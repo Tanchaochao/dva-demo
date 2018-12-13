@@ -23,6 +23,7 @@ class MyInquiry extends PureComponent {
             modalStatus: null,
             visible:false,
             open_2: true,
+            open_3: true,
         };
     }
 
@@ -71,6 +72,10 @@ class MyInquiry extends PureComponent {
         },{
             id:2,
             status:2,
+        },{
+            id:3,
+            status:1,
+            nodata: true,
         }];
         const menu = (
             <Menu>
