@@ -36,6 +36,7 @@ const Menus =(props => {
       return (
         <Menu
           mode="inline"
+          theme="dark"
         >
           {menuItems}
         </Menu>

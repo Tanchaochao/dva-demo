@@ -15,7 +15,7 @@ export default class SiderMenu extends PureComponent {
         collapsible
         width={256}
         collapsed={collapsed}
-        className={`${styles['sider-menu']} main-menu`}
+        className={`${styles['sider-menu']} homeMenu`}
       >
         <div className={styles.logo} key="logo" id="logo">
           <Link to="/">

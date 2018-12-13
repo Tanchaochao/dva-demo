@@ -1,0 +1,92 @@
+
+// 菜单主要样式 Start
+:global{
+    .homeMenu{
+        flex: 0 0 100px !important;
+        max-width: 100px !important;
+        min-width: 100px !important;
+        width: 100px !important;
+        background:@main-gradient-bg !important;
+        .placeholder{
+            margin-top: 10px;
+            margin-bottom: 0;
+        }
+        .ant-menu-dark{
+            .hxydicon {
+                font-size: 24px
+            }
+            background: transparent;
+            .ant-menu-submenu-title:hover,
+            .ant-menu-submenu-open,
+            .ant-menu-submenu-selected{
+                color: #fff;
+                background-color: rgba(0,0,0,0.1);
+               
+            }
+        }
+        // 收起菜单时的class
+        .ant-menu-submenu-title{
+            
+        }
+        .ant-menu-inline-collapsed{
+            width: 100%;
+            >.ant-menu-submenu{
+                >.ant-menu-submenu-title{
+                    padding:15px 0 !important ;
+                    text-align: center;
+                    line-height: normal !important;
+                    height: auto !important;
+                    .hxydicon + span{
+                        max-width: 0;
+                        opacity: 0;
+                        display: inline-block;
+                    }
+                }
+            }
+            .ant-menu-item{
+                padding: 15px 0 !important;
+                text-align: center;
+                line-height: normal !important;
+                height: auto !important;
+                .hxydicon + span{
+                    max-width: 0;
+                    opacity: 0;
+                    display: inline-block;
+                }
+            }
+        }
+        .ant-menu{
+           &.ant-menu-dark .ant-menu-item-selected{
+               background-color: rgba(0,0,0,0.1);
+           }
+        }
+    }
+    // 悬浮的菜单 样式
+    .ant-menu-inline-collapsed-tooltip .ant-tooltip-content {
+        .ant-tooltip-arrow{
+            border-right-color:#fff;
+        }
+        .ant-tooltip-inner .hxydicon{
+            display: none;
+        }
+        .no_children{
+            display: none;
+        }
+    }
+    .ant-menu-item:hover{
+
+    }
+    .ant-menu-dark .ant-menu-sub{
+        background: @main-gradient-bg;
+    }
+    .ant-menu-submenu-popup{
+        .ant-menu-item:not(.ant-menu-item-selected){
+            &:hover{
+                background-color: #ad8927;
+            }
+        }
+        &.ant-menu-dark .ant-menu-item-selected{
+            background-color: @yellow-color;
+        }
+    }
+}

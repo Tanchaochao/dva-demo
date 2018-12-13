@@ -8,6 +8,7 @@ import zh_CN from 'antd/lib/locale-provider/zh_CN';
 
 class RootLayout extends React.Component {
   render() {
+    console.log(this.props)
     return (
       <LocaleProvider locale={zh_CN}>
         <BasicLayout {...this.props} />

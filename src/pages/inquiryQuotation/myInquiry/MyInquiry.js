@@ -9,6 +9,7 @@ import {
     Pagination,
 } from 'antd';
 import QuoteTable from './component/QuoteTable';
+import Modal from './component/Modal';
 import styles from './MyInquiry.m.less';
 import yay from 'assets/yay.jpg'
 const { Search } = Input;
@@ -19,9 +20,20 @@ class MyInquiry extends PureComponent {
         super(props);
         this.state={
             currentTab: 1,
-            // isOpen: {},
+            modalStatus: null,
+            visible:false,
+            open_2: true,
         };
     }
+
+    // 隐藏模态框
+    hideModal = () => {
+        this.setState({
+            visible:false,
+            modalStatus:null,
+        });
+    }
+
     // 切换tabs函数
     tabsOnChange(tab, e){
         this.setState({
@@ -35,19 +47,24 @@ class MyInquiry extends PureComponent {
         });
         
     }
+    // 弹窗
+    openModal(modalStatus){
+        this.setState({
+            visible: true,
+            modalStatus,
+        });
+    }
     // 展开报价表格
     openQuoteTable(id){
-        // const {isOpen} = this.state;
         const flag = this.state[`open_${id}`];
-        // isOpen[id] = !flag;
         this.setState({
             [`open_${id}`]:!flag
         });
-        console.log(this.state);
     }
 
+
     render(){
-        const { currentTab } = this.state;
+        const { currentTab, visible, modalStatus } = this.state;
         const  list = [{
             id:1,
             status:1,
@@ -66,22 +83,32 @@ class MyInquiry extends PureComponent {
               <Menu.Item>
                 <a target="_blank" rel="noopener noreferrer" href="http://www.tmall.com/">3rd menu item</a>
               </Menu.Item>
+              <Menu.Item>
+                <a target="_blank" rel="noopener noreferrer" href="http://www.tmall.com/">3rd menu item</a>
+              </Menu.Item>
             </Menu>
           );
-        const enterButton = (
-            <span><Icon type="search" />&nbsp;&nbsp;<span>搜索</span></span>
-        );
+        // const enterButton = (
+        //     <span><Icon type="search" />&nbsp;&nbsp;<span>搜索</span></span>
+        // );
         return(
             <div className={`container ${styles.MyInquiry}`}>
                 <div className={styles.top}>
                     <div className={styles.SearchBox}>
                         <Search
+                            addonBefore="制造商料号"
+                            className={styles.Search}
+                            placeholder="请输入制造商料号"
+                            onSearch={value => console.log(value)}
+                            size="large"
+                        />
+                        {/* <Search
                             className={styles.Search}
                             placeholder="请输入制造商料号"
                             enterButton={enterButton}
                             size="large"
                             onSearch={value => console.log(value)}
-                        />
+                        /> */}
                     </div>
                     <div className={styles.tabs}>
                         <ul className={styles.left}>
@@ -90,14 +117,14 @@ class MyInquiry extends PureComponent {
                             <li className={currentTab===2 ? styles.active : ''} onClick={this.tabsOnChange.bind(this, 2)}>期货采购</li>
                         </ul>
                         <div className={styles.right}>
-                            <Dropdown overlay={menu}>
+                            <Dropdown overlay={menu}  trigger={['click']} overlayClassName={styles.dropdown}>
                                 <span style={{ cursor: "pointer", marginRight: '50px' }}>全部客户询价状态
-                                    <i className="hxydicon icon-arrow-down" />
+                                    <i className={`hxydicon icon-arrow-down ${styles['icon-arrow']}`} />
                                 </span>
                             </Dropdown>
-                            <Dropdown overlay={menu}>
+                            <Dropdown overlay={menu}  trigger={['click']} overlayClassName={styles.dropdown}>
                                 <span style={{ cursor: "pointer" }}>全部报价状态
-                                    <i className="hxydicon icon-arrow-down" />
+                                <i className={`hxydicon icon-arrow-down ${styles['icon-arrow']}`} />
                                 </span>
                             </Dropdown>
                         </div>
@@ -107,13 +134,13 @@ class MyInquiry extends PureComponent {
                     <section className={styles.operationBar}>
                         <div style={{ flex: 1 }}>
                             <Checkbox style={{ marginRight: 20 }}></Checkbox>批量报价：
-                            <span><i className="hxydicon icon-jiaoqi" /> &nbsp;交期</span>
-                            <span><i className="hxydicon icon-pihao" /> &nbsp;批号</span>
-                            <span><i className="hxydicon icon-baojiayouxiaoqi" /> &nbsp;报价有效期</span>
+                            <span onClick={this.openModal.bind(this, "Delivery")}><i className="hxydicon icon-jiaoqi" /> &nbsp;交期</span>
+                            <span onClick={this.openModal.bind(this, "Batch")}><i className="hxydicon icon-pihao" /> &nbsp;批号</span>
+                            <span onClick={this.openModal.bind(this, "Validity")}><i className="hxydicon icon-baojiayouxiaoqi" /> &nbsp;报价有效期</span>
                         </div>
                         <div className={styles.btnGroup}>
-                            <button className="myBtn" style={{ marginRight: 10 }}>提交报价</button>
-                            <button className="myBtn">导出询价</button>
+                            <button  className={`myBtn ${styles.btn}`} style={{ marginRight: 10 }}>提交报价</button>
+                            <button  className={`myBtn ${styles.btn}`}>导出询价</button>
                         </div>
                     </section>
                     {
@@ -129,7 +156,8 @@ class MyInquiry extends PureComponent {
                                             <div className={styles.info}>
                                                 <span className={styles.ampl}>TPS54531DDAR</span>
                                                 <Tooltip overlayClassName={styles.tooltip} placement="bottomLeft" title="复制">
-                                                    <Icon type="user" className={styles.icon}/>
+                                                    {/* <Icon type="user" className={styles.icon}/> */}
+                                                    <i className="hxydicon icon-fuzhi" style={{ margin: '0 12px', cursor: 'pointer' }}/>
                                                 </Tooltip>
                                                 
                                                 <span className={styles.mark}>TI</span>
@@ -142,8 +170,17 @@ class MyInquiry extends PureComponent {
                                                 <span>1,000</span>
                                         </div>
                                         <div className={styles.userCount}>
-                                                <span><b>1</b>位客户正在询价</span>
-                                                <span className={styles.time}>2018-12-12 12:12:12更新</span>
+                                                <span></span>
+                                                <Dropdown
+                                                trigger={['click']}
+                                                overlay={menu}
+                                                overlayClassName={styles.dropdown} >
+                                                    <span style={{ cursor: "pointer" }}>
+                                                        <b>1</b>位客户正在询价
+                                                        <i className={`hxydicon icon-arrow-down ${styles['icon-arrow']}`} />
+                                                    </span>
+                                                </Dropdown>
+                                                <span className={styles.time}>2018-12-12 12:12:12 更新</span>
                                         </div>
                                         </div>
                                     </div>
@@ -159,7 +196,6 @@ class MyInquiry extends PureComponent {
                             );
                         })
                     }
-                    <div></div>
                     <Pagination
                     showTotal={total_ => `共${total_}条`}
                     showQuickJumper
@@ -167,6 +203,11 @@ class MyInquiry extends PureComponent {
                     defaultCurrent={2} total={500} 
                     />
                 </div>
+                { visible ? < Modal 
+                styles={styles} 
+                hideModal={this.hideModal}
+                modalStatus={modalStatus} /> : null}
+                
             </div>
         )
     }

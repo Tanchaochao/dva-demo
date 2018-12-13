@@ -142,16 +142,16 @@ class QuoteTable extends PureComponent{
                 dataSource={this.dataSource}
                 columns={this.columns}
                 pagination={false}
-                footer={ items.status === 2 ? tableFooter :false }
+                footer={ items.status === 2 ? tableFooter : null }
                 />
                 <div className={styles.quoteTableBtnGroup} >
                 {
                     items.status === 2 ?
-                    <button type="yellow" className="myBtn" style={{ marginRight: 10 }}>暂无库存</button>:
+                    <span className={styles.noQtyBtn}><button type="yellow" className="myBtn">暂无库存</button></span>:
                     null
                 }
                     
-                    <button className="myBtn" style={{ marginRight: 10 }}>提交报价</button>
+                    <button className="myBtn" style={{ margin:"0 10px 0 20px" }}>提交报价</button>
                     <button className="myBtn">新增报价</button>
                 </div>
             </div>

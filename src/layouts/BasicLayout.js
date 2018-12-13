@@ -2,9 +2,9 @@ import React from 'react';
 
 import { Layout, Icon } from 'antd';
 import SiderMenu from '../components/SiderMenu/SiderMenu';
+import Breadcrumb from 'components/Breadcrumb/Breadcrumb';
 import styles from './BasicLayout.m.less';
-
-const { Header, Content } = Layout;
+const { Header, Content, Footer } = Layout;
 
 
 class BasicLayout extends React.Component {
@@ -16,13 +16,16 @@ class BasicLayout extends React.Component {
   }
 
   render() {
-    const { children } =this.props;
+    const { 
+      children,
+      hiddenBreadcrumb = false,
+    } =this.props;
     const { collapsed } = this.state;
     return (
       <Layout>
         < SiderMenu collapsed={collapsed}/>
         <Layout>
-          <Header style={{ background: '#fff', padding: 0 }}>
+          <Header className={styles.Header}>
            <span className={styles.collapsed}>
             {/* <Icon
                 className="trigger"
@@ -30,9 +33,16 @@ class BasicLayout extends React.Component {
               /> */}
            </span>
           </Header>
-          <Content >
-            {children}
+          <Content className={styles.Content}>
+            <div>
+              { hiddenBreadcrumb ? null : < Breadcrumb /> }
+              {children}
+            </div>
           </Content>
+          <Footer style={{ textAlign: 'center' }}>
+            <p>联系电话：0755-28129588-65149</p>
+            <p>版权所有&copy;苏州优易鸿富数据科技有限公司</p>
+          </Footer>
         </Layout>
       </Layout>
     );
