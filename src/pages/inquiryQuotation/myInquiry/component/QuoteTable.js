@@ -2,8 +2,11 @@ import React, { PureComponent } from 'react';
 import { 
     Table, 
     Switch,
+    Modal,
 } from 'antd';
 import * as Editable from './Editable';
+const { confirm } = Modal;
+
 class QuoteTable extends PureComponent{
     constructor(props){
         super(props);
@@ -122,7 +125,19 @@ class QuoteTable extends PureComponent{
     componentWillMount(){
         // console.log(this.props.items)
     }
-
+    showConfirm = () => {
+        confirm({
+          title: '是否确定将此物料设置为暂无库存',
+          content: '针对暂无库存的物料，3天内我们将不会再次要求您进行报价。',
+          width: 440,
+          onOk: () => {
+            console.log('OK');
+          },
+          onCancel() {
+            console.log('Cancel');
+          },
+        });
+    }
     render(){
         const tableFooter = () => {
             return(
@@ -150,7 +165,9 @@ class QuoteTable extends PureComponent{
                 <div className={styles.quoteTableBtnGroup} >
                 {
                     items.status === 2 && !items.nodata ?
-                    <span className={styles.noQtyBtn}><button type="yellow" className="myBtn">暂无库存</button></span>:
+                    <span className={styles.noQtyBtn}>
+                    <button onClick={this.showConfirm} type="yellow" className="myBtn">暂无库存</button>
+                    </span>:
                     null
                 }
                     {

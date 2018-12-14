@@ -7,13 +7,14 @@ import {
     Checkbox,
     Tooltip,
     Pagination,
+    Modal,
 } from 'antd';
 import QuoteTable from './component/QuoteTable';
-import Modal from './component/Modal';
+import Modals from './component/Modal';
 import styles from './MyInquiry.m.less';
 import yay from 'assets/yay.jpg'
 const { Search } = Input;
-
+const { confirm } = Modal;
 
 class MyInquiry extends PureComponent {
     constructor(props){
@@ -32,6 +33,21 @@ class MyInquiry extends PureComponent {
         this.setState({
             visible:false,
             modalStatus:null,
+        });
+    }
+
+    // 确认弹窗
+    showConfirm = () => {
+        confirm({
+        title: '是否将其他未报价的物料设置为暂无库存',
+        content: '针对暂无库存的物料，3天内我们将不会再次要求您进行报价。',
+        width: 440,
+        onOk: () => {
+            console.log('OK');
+        },
+        onCancel() {
+            console.log('Cancel');
+        },
         });
     }
 
@@ -62,7 +78,6 @@ class MyInquiry extends PureComponent {
             [`open_${id}`]:!flag
         });
     }
-
 
     render(){
         const { currentTab, visible, modalStatus } = this.state;
@@ -176,7 +191,10 @@ class MyInquiry extends PureComponent {
                             <span onClick={this.openModal.bind(this, "Validity")}><i className="hxydicon icon-baojiayouxiaoqi" /> &nbsp;报价有效期</span>
                         </div>
                         <div className={styles.btnGroup}>
-                            <button  className={`myBtn ${styles.btn}`} style={{ marginRight: 10 }}>提交报价</button>
+                            <button
+                            onClick={this.showConfirm}
+                            className={`myBtn ${styles.btn}`}
+                            style={{ marginRight: 10 }}>提交报价</button>
                             <button  className={`myBtn ${styles.btn}`}>导出询价</button>
                         </div>
                     </section>
@@ -193,10 +211,8 @@ class MyInquiry extends PureComponent {
                                             <div className={styles.info}>
                                                 <span className={styles.ampl}>TPS54531DDAR</span>
                                                 <Tooltip overlayClassName={styles.tooltip} placement="bottomLeft" title="复制">
-                                                    {/* <Icon type="user" className={styles.icon}/> */}
                                                     <i className="hxydicon icon-fuzhi" style={{ margin: '0 12px', cursor: 'pointer' }}/>
                                                 </Tooltip>
-                                                
                                                 <span className={styles.mark}>TI</span>
                                                 <div className={styles.clamp}>3.5-28V Input,5A 70kHz SD Converter3.5-28V Input,SD C</div>
                                             </div>
@@ -240,7 +256,7 @@ class MyInquiry extends PureComponent {
                     defaultCurrent={2} total={500} 
                     />
                 </div>
-                { visible ? < Modal 
+                { visible ? < Modals 
                 styles={styles} 
                 hideModal={this.hideModal}
                 modalStatus={modalStatus} /> : null}

@@ -27,13 +27,8 @@ class BasicLayout extends React.Component {
         < SiderMenu collapsed={collapsed}/>
         {/* < Siders /> */}
         <Layout>
-          <Header className={styles.Header}>
-           <span className={styles.collapsed}>
-            {/* <Icon
-                className="trigger"
-                type={this.state.collapsed ? 'menu-unfold' : 'menu-fold'}
-              /> */}
-           </span>
+          <Header className={styles.Header} style={{ textAlign: 'center' }}>
+            Header
           </Header>
           <Content className={styles.Content}>
             <div>
